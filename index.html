@@ -13,7 +13,7 @@
         @keyframes rgbEffect {
             0% { color: #ff0000; border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
             33% { color: #00ff00; border-color: #00ff00; box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); }
-            66% { color: #0000ff; border-color: #0000ff; box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); }
+            66% { color: #0000ff; border-color: #0000ff; box-shadow: 0 0 15px rgba(0, 0, 255, 0.4); }
             100% { color: #ff00ff; border-color: #ff00ff; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
         }
         @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -25,7 +25,7 @@
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
         /* Style Notifikasi Device */
-        #deviceNotif { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: var(--glass); border: 1px solid #fff; padding: 10px 20px; border-radius: 50px; backdrop-filter: blur(15px); z-index: 3000; font-weight: 700; font-size: 0.8rem; transition: 0.5s ease-in-out; }
+        #deviceNotif { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: var(--glass); border: 1px solid #fff; padding: 10px 20px; border-radius: 50px; backdrop-filter: blur(15px); z-index: 3000; font-weight: 700; font-size: 0.8rem; transition: 0.5s ease-in-out; text-transform: none !important; }
         #deviceNotif.show { top: 20px; }
 
         .music-active { animation: spinMusic 3s linear infinite; color: #00ff00; text-shadow: 0 0 10px #00ff00; }
@@ -46,7 +46,8 @@
         .profile-img { width: 95px; height: 95px; border-radius: 50%; object-fit: cover; border: 2px solid white; z-index: 2; }
         .orbit-ring { position: absolute; width: 115px; height: 115px; border-radius: 50%; border: 3px solid transparent; border-top: 3px solid #fff; border-bottom: 3px solid #fff; z-index: 1; animation: rotateRing 2s linear infinite, rgbEffect 5s linear infinite; }
         
-        h1 { font-family: 'Michroma', sans-serif; font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; }
+        /* Font Khusus untuk Nama WP septa (HURUF KECIL DISEPTA) */
+        h1 { font-family: 'Michroma', sans-serif; font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 1px; text-transform: none !important; }
         .sub-text { font-weight: 700; font-size: 0.8rem; margin-bottom: 20px; opacity: 0.8; letter-spacing: 3px; }
         
         .link-card { position: relative; display: flex; align-items: center; background: var(--glass); padding: 12px 15px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid var(--border); margin-bottom: 10px; cursor: pointer; }
@@ -300,169 +301,6 @@
         for(let i=0; i<80; i++) { stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*1.5, speed: Math.random()*0.3}); }
         function animate() { ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "white"; stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill(); s.y += s.speed; if(s.y > canvas.height) s.y = 0; }); requestAnimationFrame(animate); }
         animate();
-    </script>
-</body>
-</html>
-        #starfield { position: absolute; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-
-        .header-controls { position: absolute; top: 20px; width: 100%; padding: 0 20px; display: flex; justify-content: flex-end; z-index: 100; }
-        .music-control { background: var(--glass); padding: 12px; border-radius: 50%; border: 1px solid var(--border); backdrop-filter: blur(10px); cursor: pointer; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; }
-        .music-control i { color: #fff; font-size: 18px; }
-        .music-active i { animation: rotateMusic 2s linear infinite, rgbEffect 8s linear infinite !important; }
-
-        /* CONTAINER */
-        .container { width: 90%; max-width: 350px; background: var(--glass); border: 1px solid var(--border); border-radius: 30px; padding: 30px 20px; text-align: center; backdrop-filter: blur(20px); z-index: 5; position: relative; }
-        
-        /* FIXED PROFILE AREA */
-        .img-area { position: relative; width: 110px; height: 110px; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; }
-        .profile-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); z-index: 2; }
-        .orbit-ring { position: absolute; width: 105px; height: 105px; border-radius: 50%; border: 2px solid transparent; border-top-color: var(--accent); z-index: 1; animation: rotateRing 1s linear infinite; }
-
-        h1 { 
-            font-family: 'Michroma', sans-serif; 
-            font-size: 1.3rem; 
-            margin-bottom: 5px; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .sub-text { 
-            font-weight: 700;
-            font-size: 0.8rem; 
-            margin-bottom: 20px; 
-            opacity: 0.8; 
-            letter-spacing: 3px;
-        }
-
-        .link-card { 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            background: var(--glass); 
-            padding: 10px 15px; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            color: #fff; 
-            border: 1px solid var(--border); 
-            margin-bottom: 8px; 
-            cursor: pointer; 
-        }
-        
-        .link-text { 
-            flex-grow: 1; 
-            text-align: left; 
-            margin-left: 12px; 
-            font-size: 1rem; 
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); display: none; justify-content: center; align-items: center; z-index: 1000; flex-direction: column; }
-        .overlay img { width: 80%; max-width: 280px; border-radius: 15px; border: 2px solid #fff; }
-
-        .footer { margin-top: 15px; font-size: 0.7rem; opacity: 0.6; color: #fff; font-weight: 700; letter-spacing: 1px; }
-    </style>
-</head>
-<body>
-
-    <canvas id="starfield"></canvas>
-    
-    <audio id="bgMusic">
-        <source id="musicSource" src="ssstik.io_1774188886627.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="header-controls">
-        <div class="music-control rgb-active" id="musicToggle" onclick="toggleMusic()"><i class="fas fa-music"></i></div>
-    </div>
-
-    <div id="qrisOverlay" class="overlay">
-        <img src="qrbisnis.png" alt="QRIS">
-        <button onclick="closeModal('qrisOverlay')" style="margin-top:20px; background:none; color:#fff; border:1px solid #fff; padding:10px 20px; border-radius:50px; cursor:pointer; font-family:'Rajdhani'; font-weight:700;">TUTUP</button>
-    </div>
-
-    <div id="wechatOverlay" class="overlay">
-        <img src="mmqrcode1774267284831~2.png" alt="WeChat QR">
-        <p style="margin-top:15px; font-size:1.2rem; font-weight:700;">ID: Septa1397</p>
-        <button onclick="closeModal('wechatOverlay')" style="margin-top:20px; background:none; color:#fff; border:1px solid #fff; padding:10px 20px; border-radius:50px; cursor:pointer; font-family:'Rajdhani'; font-weight:700;">TUTUP</button>
-    </div>
-
-    <div class="container rgb-active" id="mainContainer">
-        <div class="img-area">
-            <div class="orbit-ring rgb-active"></div>
-            <img src="quality_restoration_20260224143600485.png" class="profile-img rgb-active">
-        </div>
-        <h1 class="rgb-active">WP septa</h1>
-        <p class="sub-text rgb-active">MY PROFILE</p>
-
-        <div class="links-container">
-            <div class="link-card" style="border:1px solid #ffcc00; color:#ffcc00;" onclick="showModal('qrisOverlay')">
-                <i class="fas fa-qrcode"></i><span class="link-text">SUPPORT ME</span>
-            </div>
-            <a href="https://wa.me/6283169444566" class="link-card rgb-active" target="_blank"><i class="fab fa-whatsapp"></i><span class="link-text">WHATSAPP BUSINESS</span></a>
-            <a href="https://wa.me/628980332138" class="link-card rgb-active" target="_blank"><i class="fab fa-whatsapp"></i><span class="link-text">WHATSAPP PRIBADI</span></a>
-            <a href="https://www.tiktok.com/@wp_septa" class="link-card rgb-active" target="_blank"><i class="fab fa-tiktok"></i><span class="link-text">TIKTOK</span></a>
-            <a href="https://instagram.com/wp_septaa" class="link-card rgb-active" target="_blank"><i class="fab fa-instagram"></i><span class="link-text">INSTAGRAM</span></a>
-            <div class="link-card rgb-active" onclick="showModal('wechatOverlay')">
-                <i class="fab fa-weixin"></i><span class="link-text">WECHAT</span>
-            </div>
-        </div>
-        
-        <div class="footer rgb-active">
-            <i class="fas fa-eye"></i> TOTAL VIEWS: <span id="visitor-count">...</span>
-        </div>
-    </div>
-
-    <script>
-        const playlist = [
-            "ssstik.io_1774188886627.mp3",
-            "SpotiDown.App - Lost Woods Jersey Club - Slowed - MirYouMadeIt.mp3"
-        ];
-        let currentTrack = 0;
-        const audio = document.getElementById("bgMusic");
-        const musicSource = document.getElementById("musicSource");
-        const musicBtn = document.getElementById("musicToggle");
-        let isMusicPlaying = false;
-
-        audio.onended = function() {
-            currentTrack++;
-            if (currentTrack >= playlist.length) currentTrack = 0;
-            musicSource.src = playlist[currentTrack];
-            audio.load();
-            audio.play();
-        };
-
-        function toggleMusic() {
-            if (isMusicPlaying) { audio.pause(); musicBtn.classList.remove("music-active"); }
-            else { audio.play(); musicBtn.classList.add("music-active"); }
-            isMusicPlaying = !isMusicPlaying;
-        }
-
-        function initCounter() {
-            const countEl = document.getElementById('visitor-count');
-            let localCount = parseInt(localStorage.getItem('wp_visits')) || 1248;
-            localCount++;
-            localStorage.setItem('wp_visits', localCount);
-            fetch('https://api.countapi.xyz/hit/wpsepta_v3/visits')
-            .then(res => res.json()).then(data => { countEl.innerText = data.value.toLocaleString(); })
-            .catch(() => { countEl.innerText = localCount.toLocaleString(); });
-        }
-        initCounter();
-
-        function showModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        const canvas = document.getElementById('starfield');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        let stars = [];
-        for(let i=0; i<70; i++) { stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*1.2, speed: Math.random()*0.3}); }
-        function animateStars() {
-            ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-            stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill(); s.y += s.speed; if(s.y > canvas.height) s.y = 0; });
-            requestAnimationFrame(animateStars);
-        }
-        animateStars();
     </script>
 </body>
 </html>
